@@ -1,7 +1,9 @@
 import express from "express";
+import cors from "cors"
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const database = {
     users: [
@@ -31,7 +33,7 @@ app.get('/', (req, res)=> {
 app.post('/signin', (req, res) => {
     if (req.body.email === database.users[0].email &&
         req.body.password === database.users[0].password) {
-            res.json('success')
+            res.json('success');
         } else {
             res.status(400).json('error logging in')
         }
@@ -79,8 +81,8 @@ app.put('/image', (req, res) => {
     }
 })
 
-app.listen(3000, ()=> {
-    console.log('app is running on port 3000')
+app.listen(4000, ()=> {
+    console.log('app is running on port 4000')
 });
 
 // app.use(express.urlencoded({extended: false}));
